@@ -13,10 +13,14 @@
             hint="Edit the title of this task"
           ></v-text-field>
 
-          <v-dialog light ref="dialog" v-model="modal" persistent width="290px">
+          <v-dialog 
+              v-model="modal" 
+              light 
+              ref="dialog" 
+              persistent width="290px">
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
-                v-model="date"
+                :value="date"
                 label="Select due date"
                 prepend-icon="mdi-calendar"
                 readonly
@@ -74,8 +78,9 @@ export default {
       valid: true,
       modal: false,
       taskTitle: null,
-      taskDueDate: null,
+      editableDate: null,
       date: null,
+      // date: new Date().toISOString().substr(0, 10),
 
       inputRules: [
         (v) => !!v || 'Title is required',
@@ -84,32 +89,30 @@ export default {
       ],
     }
   },
-  //! aslında boş kısmını inputRules da kontrol ediyor ama validationa örnek olması için ekledim yine de sadece aynısı mı yani değişiklik olmuşmuya bakılabilir - bunu commete alıp iptal ettim çünkü kullanıcı yalnızca tarih değişikliği için de edit yapabilir - title a dokunmayabilir bu haliyle title da değişiklik yapmaz ise save ettirmemiş oluyorum
-  //   computed: {
-
-  //     checkTitleChangedOrEmpty() {
-  //       return !this.taskTitle || this.taskTitle === this.task.title
-  //     },
-  //   },
   //! sayfa render edildikten sonra kayıtlı task verilerini almak için mounted kullandık
   mounted() {
     this.taskTitle = this.task.title
-    this.date = format(
-      parseISO(new Date(this.task.dueDate).toISOString()),
-      'd MMM Y, EEE',
-      {
-        locale: tr,
-      }
-    )
-    // this.dueDate = this.task.dueDate
+    this.date = this.task.dueDate
+
   },
+  
+  // burada tarihin date pickerdaki değişikliğini izledim, son değeri editableDate atayıp bunu aşağıdaki payload ile gönderdim böylece date pickerı tam olarak hakkıyla kullanılmış oldu
+  watch: {
+    date(val, oldval) {
+      console.log('son değer: ', val)
+      console.log('ilk değer: ', oldval)
+      this.editableDate = val
+
+    }
+  },
+
   methods: {
     sendDataForUpdate() {
       if (this.$refs.form.validate()) {
         let payload = {
           id: this.task.id,
           title: this.taskTitle,
-          dueDate: new Date(this.taskDueDate).toISOString().substr(0, 10),
+          dueDate: this.editableDate
         }
         console.log('updateData: ', payload)
         this.$store.dispatch('updateTask', payload)
