@@ -1,5 +1,47 @@
 {
-  "buttonNew": "Yeni Ekle",
-  "buttonClose": "Kapat",
-  "listName": "Yapılacaklar Listesi"
+  "listName": "Yapılacaklar Listesi",
+  "aboutPage": "Hakkımızda...",
+  "toggleAppName" : "Yapılacaklar Uygulaması",
+  "toggleAppSubTitle" : "Henüz daha iyisi geliştirilmedi!",
+  "noTask": "Kayıt yok!",
+  "nav": {
+    "todo": "Yapılacaklar",
+    "about": "Hakkımızda"
+  },
+  "button" : {
+    "form" : {
+      "new" : "Yeni Ekle",
+      "close": "Kapat",
+      "add": "Ekle",
+      "clear": "Temizle"
+    }
+  },
+  "form": {
+    "label": {
+      "todo" : "Yapılacak işin tanımını girin",
+      "date" : "İşin bitiş tarihini seçin"
+    }
+  },
+  "dialog": {
+    "button": {
+      "cancel" : "İptal",
+      "ok": "Seç",
+      "no": "Hayır",
+      "yes": "Evet"
+    },
+    "delete": {
+      "title": "Emin misin?",
+      "desc": "Gerçekten silmek istiyor musun? Bu işlem geri alınamaz ve bu kayda tekrar ulaşamazsın!"
+    }
+    
+  },
+  "snackbar": {
+    "add": "Yapılacak iş eklendi!",
+    "update": "Yapılacak iş güncellendi!",
+    "delete": "Yapılacak iş silindi!"
+  },
+  "taskMenu": {
+    "Edit": "Düzenle",
+    "Delete": "Sil"
+  }   
 }

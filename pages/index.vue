@@ -1,9 +1,5 @@
 <template>
   <v-container>
-    <div class="container">
-      <h1 class="title">{{ $t('listName') }}</h1>
-      <!-- some code -->
-    </div>
     <v-btn
       v-if="!showButton"
       class="mb-3"
@@ -12,7 +8,7 @@
       color="pink"
     >
       <v-icon left> mdi-calendar-plus </v-icon>
-      Add New
+      {{ $t('button.form.new') }}
     </v-btn>
 
     <v-btn
@@ -23,7 +19,7 @@
       color="pink"
     >
       <v-icon left> mdi-close-circle </v-icon>
-      Close
+      {{ $t('button.form.close') }}
     </v-btn>
 
     <!-- Todo Form -->
@@ -32,7 +28,7 @@
 
     <h3 v-if="getTasks.length" class="mb-3">
       <v-icon left> mdi-format-list-checks </v-icon>
-      Todo List
+      {{ $t('listName') }}
     </h3>
     <!-- No Tasks View-->
     <no-tasks v-else></no-tasks>
@@ -50,6 +46,7 @@ import NoTasks from '../components/Todo/NoTasks'
 import { mapGetters } from 'vuex'
 
 export default {
+  name: 'index',
   components: { TodoForm, TodoModal, ListTasks, NoTasks },
   data() {
     return {
@@ -64,7 +61,6 @@ export default {
   },
   methods: {
     addTodo(emitTodo) {
-      //const message = 'Todo added successfully!'
       this.$store.dispatch('addTask', emitTodo)
       this.showButton = false
     },

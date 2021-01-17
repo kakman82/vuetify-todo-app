@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <p class="font-weight-black">About us</p>
+    <p class="font-weight-black">{{ $t('aboutPage') }}</p>
     <div class="d-flex-justify">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium
@@ -29,3 +29,15 @@
     </div>
   </v-container>
 </template>
+
+<script>
+// https://i18n.nuxtjs.org/routing uyguladım fakat çalışmadı...
+export default {
+  nuxtI18n: {
+    paths: {
+      en: '/about-us',
+      tr: '/hakkimizda',
+    },
+  },
+}
+</script>

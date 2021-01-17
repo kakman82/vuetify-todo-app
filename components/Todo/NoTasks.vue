@@ -4,7 +4,7 @@
       <v-icon size="100" color="pink"> mdi-check </v-icon>
     </div>
     <v-spacer></v-spacer>
-    <div class="text-h4 pink--text">No tasks!</div>
+    <div class="text-h4 pink--text">{{ $t('noTask') }}</div>
   </div>
 </template>
 

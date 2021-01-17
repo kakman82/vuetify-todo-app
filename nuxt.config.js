@@ -38,17 +38,23 @@ export default {
     [
       'nuxt-i18n',
       {
+        strategy: 'prefix_except_default',
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected',
+          onlyOnRoot: true,  // recommended
+        },
         /* module options */
         locales: [
           {
             code: 'en',
             iso: 'en-US',
-            name: 'English',
+            name: 'ENG',
           },
           {
             code: 'tr',
             iso: 'tr-TR',
-            name: 'Türkçe',
+            name: 'TR',
           },
         ],
         defaultLocale: 'en',

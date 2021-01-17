@@ -4,7 +4,7 @@
       v-model="title"
       :rules="inputRules"
       :counter="50"
-      label="Todo Title"
+      :label="$t('form.label.todo')"
       color="pink"
       required
     ></v-text-field>
@@ -19,7 +19,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-text-field
           :value="dueDate"
-          label="Select due date"
+          :label="$t('form.label.date')"
           prepend-icon="mdi-calendar"
           readonly
           v-bind="attrs"
@@ -29,30 +29,38 @@
       </template>
       <v-date-picker
         v-model="date"
+        light
         header-color="pink"
         scrollable
         year-icon="mdi-calendar-blank"
         prev-icon="mdi-skip-previous"
         next-icon="mdi-skip-next"
         :first-day-of-week="1"
-        locale="tr-TR"
+        :locale="getLocale"
       >
         <v-spacer></v-spacer>
-        <v-btn text color="green" @click="modal = false"> Cancel </v-btn>
-        <v-btn text color="pink" @click="$refs.dialog.save(date)"> OK </v-btn>
+        <v-btn text color="green" @click="modal = false">
+          {{ $t('dialog.button.cancel') }}
+        </v-btn>
+        <v-btn text color="pink" @click="$refs.dialog.save(date)">
+          {{ $t('dialog.button.ok') }}
+        </v-btn>
       </v-date-picker>
     </v-dialog>
 
     <v-btn small color="pink" class="mr-4 mt-1" @click="saveTodo">
-      Add Todo
+      {{ $t('button.form.add') }}
     </v-btn>
 
-    <v-btn small color="green" class="mr-4 mt-1" @click="reset"> Clear </v-btn>
+    <v-btn small color="green" class="mr-4 mt-1" @click="reset">
+      {{ $t('button.form.clear') }}
+    </v-btn>
   </v-form>
 </template>
 
 <script>
 import { format, parseISO } from 'date-fns'
+import { tr } from 'date-fns/locale'
 export default {
   emits: ['save-todo'],
   data: () => ({
@@ -60,14 +68,20 @@ export default {
     modal: false,
     title: '',
     dueDate: null,
-    // bugünkü tarihi göstermesi için takvimde işaretli olarak
-    date: format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'),
+    // date: format(parseISO(new Date().toISOString()), 'dd-MM-yyyy'),
+    date: null,
+
     inputRules: [
       (v) => !!v || 'Title is required',
       (v) => (v && v.length >= 3) || 'Must be greater than 3 characters',
       (v) => (v && v.length <= 50) || 'Must be less than 50 characters',
     ],
   }),
+  computed: {
+    getLocale() {
+      return this.$i18n.locale
+    },
+  },
 
   methods: {
     saveTodo() {
@@ -78,6 +92,7 @@ export default {
           title: this.title,
           dueDate: this.dueDate,
           done: false,
+          translatedMessage: this.$t('snackbar.add'),
         }
         // console.log('formData: ', formData)
         this.$emit('save-todo', formData)

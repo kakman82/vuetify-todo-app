@@ -1,5 +1,46 @@
 {
-  "buttonNew": "Add New",
-  "buttonClose": "Close",
-  "listName": "Todo List"
+  "listName": "Todo List",
+  "aboutPage": "About us",
+  "toggleAppName" : "Todo App",
+  "toggleAppSubTitle" : "Best Todo Ever!",
+  "noTask": "No tasks!",
+  "nav": {
+    "todo": "Todo",
+    "about": "About"
+  },
+  "button" : {
+    "form" : {
+      "new" : "Add New",
+      "close": "Close",
+      "add": "Add Todo",
+      "clear": "Clear"
+    }
+  },
+  "form": {
+    "label": {
+      "todo" : "Todo Title",
+      "date" : "Select due date"
+    }
+  },
+  "dialog": {
+    "button": {
+      "cancel" : "Cancel",
+      "ok": "OK",
+      "no": "No",
+      "yes": "Yes"
+    },
+    "delete": {
+      "title": "Are you sure?",
+      "desc": "Do you really want to delete this todo? This process cannot be undone."
+    }
+  },
+  "snackbar": {
+    "add": "Todo added!",
+    "update": "Task updated!",
+    "delete": "Task deleted!"
+  },
+  "taskMenu": {
+    "Edit": "Edit",
+    "Delete": "Delete"
+  } 
 }

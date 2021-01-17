@@ -68,13 +68,19 @@ export const mutations = {
 export const actions = {
   // burada commit {} olarak belirtmemezin sebebi ES2015 gereği daha simple hale getirmek yoksa context.commit ile erişim sağlayacaktık:  --> https://vuex.vuejs.org/guide/actions.html
 
-  addTask({ commit }, newTodo) {
+  addTask({ commit }, newTodo ) {
     commit('addTaskToState', newTodo)
-    commit('showSnackbar', 'Task added!')
+    // commit('showSnackbar', 'Task added!')
+    //! bu $t çalışmadı vuex içinde localization için ... bende gelen newTodo içinde TodoForm.vue içinde translate message ek property olarak ekleyip gönderdim
+    // commit('showSnackbar', $t('snackbar.add'))
+    // console.log(newTodo);
+    commit('showSnackbar', newTodo.translatedMessage)
   },
-  deleteTask({ commit }, id) {
+  //! actiona iki ayrı parametre gönderilmek istendiğinde distructing yöntemi uygulanıyor {} içinde gönderiliyor - yanı işi yukarıda addTask taki mesaj içinde yapabilirdim iki farklı örnek olması için bu şekilde bıraktım
+  deleteTask({ commit }, {id, translatedMessage }) {
     commit('deleteTaskFromState', id)
-    commit('showSnackbar', 'Task deleted!')
+    // commit('showSnackbar', 'Task deleted!')
+    commit('showSnackbar', translatedMessage)
   },
   updateTask({ commit }, payload) {
     commit('updateTask', payload)

@@ -7,18 +7,17 @@
         </v-btn>
       </template>
 
-      <v-list flat>
-        <v-subheader>Task Menu</v-subheader>
+      <v-list>
+        <v-subheader>Menu</v-subheader>
         <v-list-item-group v-model="selectedItem" color="pink">
           <v-list-item v-for="(item, index) in items" :key="index">
             <v-list-item-icon>
               <v-icon v-text="item.icon" small color="pink"></v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title
-                v-text="item.title"
-                @click="clickHandler(index)"
-              ></v-list-item-title>
+              <v-list-item-title @click="clickHandler(index)">{{
+                $t(item.title)
+              }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -53,7 +52,7 @@ export default {
     },
     items: [
       {
-        title: 'Edit',
+        title: 'taskMenu.Edit',
         icon: 'mdi-pencil-plus',
         click() {
           // console.log('edit')
@@ -62,7 +61,7 @@ export default {
       },
 
       {
-        title: 'Delete',
+        title: 'taskMenu.Delete',
         icon: 'mdi-delete',
         click() {
           // console.log('delete')
