@@ -1,4 +1,5 @@
 export const state = () => ({
+  search: null,
   snackbar: {
     show: false,
     text: '',
@@ -6,14 +7,14 @@ export const state = () => ({
   tasks: [
     {
       id: 1,
-      title: "Clean kitchen.Don't forget the are under the sink",
-      dueDate: '2020-01-15',
+      title: "Clean kitchen. Don't forget under the sink",
+      dueDate: '15/01/2021',
       done: false,
     },
     {
       id: 2,
       title: 'Call Eric',
-      dueDate: '2020-02-21',
+      dueDate: '21/02/2021',
       done: false,
     },
     {
@@ -63,6 +64,9 @@ export const mutations = {
   hideSnackbar(state) {
     state.snackbar.show = false
   },
+  setSearch(state, value){
+    this.state.search = value
+  }
 }
 
 export const actions = {
@@ -84,16 +88,17 @@ export const actions = {
   },
   updateTask({ commit }, payload) {
     commit('updateTask', payload)
-    commit('showSnackbar', 'Task updated!')
+    commit('showSnackbar', payload.translatedMessage)
   },
 }
 
 export const getters = {
-  // index.vue da computed içinde belirtince buna gerek kalmadı
-  // getTasks(state) {
-  //   //console.log(state.tasks)
-  //   return state.tasks
-  // },
+  filteredTask(state) {
+    if(state.search === null) {
+      return state.tasks
+    }
+    return state.tasks.filter(el => el.title.toLowerCase().includes(state.search.toLowerCase()))
+  }
 }
 
 //! chrome consolda Error: [vuex] Do not mutate vuex store state outside mutation handlers hatasını almamak için nuxt daki store.js deki strict tanımını false yaparak override ettim. Normal de production modunda zaten false oluyor

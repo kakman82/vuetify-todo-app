@@ -9,22 +9,17 @@
       required
     ></v-text-field>
 
-    <v-dialog
-      ref="dialog"
-      v-model="modal"
-      :return-value.sync="dueDate"
-      persistent
-      width="290px"
-    >
+    <v-dialog ref="dialog" v-model="modal" persistent width="290px">
       <template v-slot:activator="{ on, attrs }">
         <v-text-field
           :value="dueDate"
           :label="$t('form.label.date')"
           prepend-icon="mdi-calendar"
-          readonly
+          clearable
           v-bind="attrs"
           v-on="on"
           color="pink"
+          @click:clear="date = null"
         ></v-text-field>
       </template>
       <v-date-picker
@@ -35,8 +30,10 @@
         year-icon="mdi-calendar-blank"
         prev-icon="mdi-skip-previous"
         next-icon="mdi-skip-next"
+        show-adjacent-months
         :first-day-of-week="1"
         :locale="getLocale"
+        @change="menu = false"
       >
         <v-spacer></v-spacer>
         <v-btn text color="green" @click="modal = false">
@@ -61,25 +58,30 @@
 <script>
 import { format, parseISO } from 'date-fns'
 import { tr } from 'date-fns/locale'
+
 export default {
   emits: ['save-todo'],
-  data: () => ({
-    valid: true,
-    modal: false,
-    title: '',
-    dueDate: null,
-    // date: format(parseISO(new Date().toISOString()), 'dd-MM-yyyy'),
-    date: null,
 
-    inputRules: [
-      (v) => !!v || 'Title is required',
-      (v) => (v && v.length >= 3) || 'Must be greater than 3 characters',
-      (v) => (v && v.length <= 50) || 'Must be less than 50 characters',
-    ],
-  }),
+  data() {
+    return {
+      modal: false,
+      valid: true,
+      title: '',
+      date: null,
+      inputRules: [
+        (v) => !!v || this.$t('form.errorRequired'),
+        (v) => (v && v.length >= 3) || this.$t('form.errorGreaterThan'),
+        (v) => (v && v.length <= 50) || this.$t('form.errorLessThan'),
+      ],
+    }
+  },
   computed: {
     getLocale() {
       return this.$i18n.locale
+    },
+    // bu şekilde tarih seçimi sonrası text field da görünecek olan tarihin formatını değiştirmiş oldum - bu önemli ne yaparsak aşağıda formData ile store ya da db ye aynı şekilde gönderilecek ve yine aynı formatta tarihi alıp parse edip sonra istenilen görüntüdeki formata dönüşütürülmeli
+    dueDate() {
+      return this.date ? format(parseISO(this.date), 'dd/MM/yyyy') : ''
     },
   },
 

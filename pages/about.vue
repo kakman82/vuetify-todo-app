@@ -31,13 +31,13 @@
 </template>
 
 <script>
-// https://i18n.nuxtjs.org/routing uyguladım fakat çalışmadı...
-export default {
-  nuxtI18n: {
-    paths: {
-      en: '/about-us',
-      tr: '/hakkimizda',
-    },
-  },
-}
+// https://i18n.nuxtjs.org/routing uyguladım - hem component de hem de nuxt.config de modül tanımından da oluyor
+// export default {
+//   nuxtI18n: {
+//     paths: {
+//       en: '/about-us',
+//       tr: '/hakkimizda',
+//     },
+//   },
+// }
 </script>

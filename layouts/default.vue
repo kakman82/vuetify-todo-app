@@ -37,8 +37,8 @@
         :key="locale.code"
         :to="switchLocalePath(locale.code)"
       >
-        <v-btn rounded color="black"
-          ><v-icon left>mdi-web-box</v-icon>{{ locale.name }}</v-btn
+        <v-btn rounded color="black" small
+          ><v-icon left small>mdi-web-box</v-icon>{{ locale.name }}</v-btn
         >
       </nuxt-link>
     </v-app-bar>
@@ -69,13 +69,15 @@ export default {
         {
           icon: 'mdi-format-list-checks',
           title: 'Todo',
-          to: '/',
+          // slash / olmadan gönderildiğinde oldu
+          to: 'index',
           forTranslate: 'nav.todo',
         },
         {
           icon: 'mdi-information-variant',
           title: 'About',
-          to: '/about',
+          // slash / olmadan gönderildiğinde oldu direkt moduldeki tanımdan en ise /about-us tr ise tr/hakkimizda ya gidiyor link..
+          to: 'about',
           forTranslate: 'nav.about',
         },
       ],

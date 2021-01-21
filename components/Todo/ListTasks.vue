@@ -4,7 +4,7 @@
 
     <!-- Task List Item -->
     <task-item
-      v-for="task in $store.state.tasks"
+      v-for="task in $store.getters.filteredTask"
       :key="task.id"
       :task="task"
     ></task-item>

@@ -13,13 +13,23 @@
       "new" : "Add New",
       "close": "Close",
       "add": "Add Todo",
-      "clear": "Clear"
+      "clear": "Clear",
+      "save": "Save",
+      "cancel": "Cancel"
     }
   },
   "form": {
     "label": {
       "todo" : "Todo Title",
       "date" : "Select due date"
+    },
+    "errorRequired": "Title is required!",
+    "errorGreaterThan": "Must be greater than 3 characters",
+    "errorLessThan": "Must be less than 50 characters",
+    "edit": {
+      "titleName": "Edit Task",
+      "textFieldHint": "Edit the title of this task",
+      "dateFieldHint": "Edit the due date of this task"
     }
   },
   "dialog": {
@@ -42,5 +52,6 @@
   "taskMenu": {
     "Edit": "Edit",
     "Delete": "Delete"
-  } 
+  },
+  "searchTExtField" : "Search for..."  
 }

@@ -23,15 +23,23 @@
     </v-btn>
 
     <!-- Todo Form -->
-    <todo-form v-if="showButton" @save-todo="addTodo" class="mb-5"></todo-form>
-    <v-spacer></v-spacer>
+    <todo-form v-if="showButton" @save-todo="addTodo" class="mb-3"></todo-form>
 
-    <h3 v-if="getTasks.length" class="mb-3">
+    <v-divider></v-divider>
+
+    <!-- Todo Header and Search Button -->
+
+    <h3 v-if="getTasks.length" class="mt-2">
       <v-icon left> mdi-format-list-checks </v-icon>
       {{ $t('listName') }}
     </h3>
+
+    <!-- Search Field -->
+
+    <search class="mx-auto"></search>
+
     <!-- No Tasks View-->
-    <no-tasks v-else></no-tasks>
+    <no-tasks v-if="!getTasks.length"></no-tasks>
 
     <!-- List of tasks -->
     <list-tasks></list-tasks>
@@ -43,11 +51,12 @@ import TodoForm from '../components/Todo/TodoForm'
 import TodoModal from '../components/Todo/TodoModal'
 import ListTasks from '../components/Todo/ListTasks'
 import NoTasks from '../components/Todo/NoTasks'
+import Search from '../components/Tools/Search'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'index',
-  components: { TodoForm, TodoModal, ListTasks, NoTasks },
+  components: { TodoForm, TodoModal, ListTasks, NoTasks, Search },
   data() {
     return {
       showButton: false,

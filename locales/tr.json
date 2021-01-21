@@ -13,14 +13,25 @@
       "new" : "Yeni Ekle",
       "close": "Kapat",
       "add": "Ekle",
-      "clear": "Temizle"
+      "clear": "Temizle",
+      "save": "Kaydet",
+      "cancel": "İptal"
     }
   },
   "form": {
     "label": {
       "todo" : "Yapılacak işin tanımını girin",
       "date" : "İşin bitiş tarihini seçin"
+    },
+    "errorRequired": "Zorunlu alandır, giriş yapmalısın!",
+    "errorGreaterThan": "3 karakteden daha fazla olmalıdır.",
+    "errorLessThan": "50 karakterden fazla olmalıdır.",
+    "edit": {
+      "titleName": "Düzenle",
+      "textFieldHint": "Yapılacak işi düzenle",
+      "dateFieldHint": "Yapılacak işin bitiş tarihini düzenle"
     }
+
   },
   "dialog": {
     "button": {
@@ -43,5 +54,6 @@
   "taskMenu": {
     "Edit": "Düzenle",
     "Delete": "Sil"
-  }   
+  },
+  "searchTExtField" : "Ara..."     
 }

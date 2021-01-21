@@ -26,7 +26,12 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    //! https://github.com/nuxt-community/date-fns-module
+    '@nuxtjs/date-fns', 
+
   ],
+  //! nasıl eklendiğini göstermek için ekledim yukarıda da ana modül tanımı mevcut, kullanım için --> https://github.com/nuxt-community/date-fns-module
+  dateFns: { format: 'dd.MM.yyyy' },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -65,6 +70,14 @@ export default {
             tr: require('./locales/tr.json'),
           },
         },
+        // https://i18n.nuxtjs.org/routing
+        parsePages: false,   // Disable babel parsing
+        pages: {
+          about: {
+            en: '/about-us', // -> accessible at /about-us (no prefix since it's the default locale)
+            tr: '/hakkimizda', // -> accessible at /fr/a-propos
+          }
+        }
       },
     ],
   ],
@@ -92,5 +105,10 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    //! Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory - hatası için bu tanımı yaptım limiti artırmak için 
+    //! --> https://stackoverflow.com/questions/61010192/nuxt-and-axios-javascript-heap-out-of-memory
+    
+    standalone: true
+  },
 }
