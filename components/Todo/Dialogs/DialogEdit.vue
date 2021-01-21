@@ -18,7 +18,7 @@
           <v-dialog ref="dialog" light v-model="modal" persistent width="290px">
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
-                v-model="currentDueDate"
+                :value="currentDueDate"
                 :label="$t('form.label.date')"
                 prepend-icon="mdi-calendar"
                 clearable
@@ -104,7 +104,6 @@ export default {
     this.taskTitle = this.task.title
 
     if (this.task.dueDate) {
-      //this.currentDueDate = this.task.dueDate
       this.currentDueDate = this.task.dueDate
     }
   },

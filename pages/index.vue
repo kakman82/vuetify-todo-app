@@ -1,49 +1,57 @@
 <template>
-  <v-container>
-    <v-btn
-      v-if="!showButton"
-      class="mb-3"
-      @click="showButton = !showButton"
-      block
-      color="pink"
-    >
-      <v-icon left> mdi-calendar-plus </v-icon>
-      {{ $t('button.form.new') }}
-    </v-btn>
+  <div>
+    <v-container>
+      <v-btn
+        v-if="!showButton"
+        class="mb-3"
+        @click="showButton = !showButton"
+        block
+        color="pink"
+      >
+        <v-icon left> mdi-calendar-plus </v-icon>
+        {{ $t('button.form.new') }}
+      </v-btn>
 
-    <v-btn
-      v-if="showButton"
-      class="mb-3"
-      @click="showButton = !showButton"
-      block
-      color="pink"
-    >
-      <v-icon left> mdi-close-circle </v-icon>
-      {{ $t('button.form.close') }}
-    </v-btn>
+      <v-btn
+        v-if="showButton"
+        class="mb-3"
+        @click="showButton = !showButton"
+        block
+        color="pink"
+      >
+        <v-icon left> mdi-close-circle </v-icon>
+        {{ $t('button.form.close') }}
+      </v-btn>
 
-    <!-- Todo Form -->
-    <todo-form v-if="showButton" @save-todo="addTodo" class="mb-3"></todo-form>
+      <!-- Todo Form -->
+      <todo-form
+        v-if="showButton"
+        @save-todo="addTodo"
+        class="mb-3"
+      ></todo-form>
 
-    <v-divider></v-divider>
+      <v-divider></v-divider>
+    </v-container>
+    <v-container>
+      <!-- Search Field -->
+      <!-- <search class="my-n5" width="500px"></search> -->
+      <search class="d-flex my-n2"></search>
 
-    <!-- Todo Header and Search Button -->
+      <!-- Todo Header and Search Button -->
 
-    <h3 v-if="getTasks.length" class="mt-2">
-      <v-icon left> mdi-format-list-checks </v-icon>
-      {{ $t('listName') }}
-    </h3>
+      <h3 v-if="getTasks.length" class="mb-3">
+        <v-icon left> mdi-format-list-checks </v-icon>
+        {{ $t('listName') }}
+      </h3>
+      <v-spacer></v-spacer>
 
-    <!-- Search Field -->
+      <!-- No Tasks View-->
+      <no-tasks v-if="!getTasks.length"></no-tasks>
 
-    <search class="mx-auto"></search>
-
-    <!-- No Tasks View-->
-    <no-tasks v-if="!getTasks.length"></no-tasks>
-
-    <!-- List of tasks -->
-    <list-tasks></list-tasks>
-  </v-container>
+      <!-- List of tasks -->
+      <list-tasks></list-tasks>
+    </v-container>
+  </div>
 </template>
 
 <script>

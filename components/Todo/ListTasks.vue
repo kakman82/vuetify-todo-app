@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card>
     <v-divider></v-divider>
 
     <!-- Task List Item -->

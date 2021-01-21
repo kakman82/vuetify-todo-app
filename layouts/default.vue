@@ -25,10 +25,28 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed color="deep-purple" app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-      <v-toolbar-title v-text="`${$t('toggleAppName')}`" />
+    <v-app-bar
+      :clipped-left="clipped"
+      app
+      absolute
+      color="indigo darken-4"
+      shrink-on-scroll
+      prominent
+      scroll-target="#scrolling-techniques"
+    >
+      <v-container class="pa-1">
+        <v-row>
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+        </v-row>
+
+        <v-row class="mt-5 ml-1 text-h5">
+          <v-toolbar-title v-text="`${$t('toggleAppName')}`" />
+        </v-row>
+        <v-row>
+          <live-datetime></live-datetime>
+        </v-row>
+      </v-container>
 
       <v-spacer />
 
@@ -42,6 +60,7 @@
         >
       </nuxt-link>
     </v-app-bar>
+
     <v-main>
       <v-container>
         <nuxt />
@@ -57,9 +76,10 @@
 
 <script>
 import Snackbar from '../components/Shared/Snackbar.vue'
+import LiveDatetime from '../components/Tools/LiveDatetime.vue'
 export default {
   name: 'default',
-  components: { Snackbar },
+  components: { Snackbar, LiveDatetime },
   data() {
     return {
       clipped: true,
