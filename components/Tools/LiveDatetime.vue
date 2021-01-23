@@ -47,7 +47,8 @@ export default {
     //   })
   },
   // sayfa yüklendikten sonra metdosun çağırılması için mounted()
-  mounted() {
+  // created() da kullanılabilir data için özellikle created kullanılması daha çok önerilen bir yöntem sıralamada da mounted dan döah önce yani tüm componentlerin yüklenmesi beklenmeden tarihi alsak en hızlısı olur diye created yaptım
+  created() {
     this.getDate()
   },
   // bu şekilde watch ile dil değişikliği izlenebilir, kullanılabilir ama benim işimi computed gördü :)

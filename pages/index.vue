@@ -32,7 +32,7 @@
 
       <v-divider></v-divider>
     </v-container>
-    <v-container>
+    <v-container v-if="getTasks.length">
       <!-- Search Field -->
       <!-- <search class="my-n5" width="500px"></search> -->
       <search class="d-flex my-n2"></search>
@@ -45,12 +45,11 @@
       </h3>
       <v-spacer></v-spacer>
 
-      <!-- No Tasks View-->
-      <no-tasks v-if="!getTasks.length"></no-tasks>
-
       <!-- List of tasks -->
       <list-tasks></list-tasks>
     </v-container>
+    <!-- No Tasks View-->
+    <no-tasks v-if="!getTasks.length"></no-tasks>
   </div>
 </template>
 
