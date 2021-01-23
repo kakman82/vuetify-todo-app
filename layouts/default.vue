@@ -25,48 +25,67 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-
-    <v-app-bar
-      :clipped-left="clipped"
-      app
-      absolute
-      color="indigo darken-4"
-      shrink-on-scroll
-      prominent
-      scroll-target="#scrolling-techniques"
-    >
-      <v-container class="pa-1">
-        <v-row>
-          <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-        </v-row>
-
-        <v-row class="mt-5 ml-1 text-h5">
-          <v-toolbar-title v-text="`${$t('toggleAppName')}`" />
-        </v-row>
-        <v-row>
-          <live-datetime></live-datetime>
-        </v-row>
-      </v-container>
-
-      <v-spacer />
-
-      <nuxt-link
-        v-for="locale in availableLocales"
-        :key="locale.code"
-        :to="switchLocalePath(locale.code)"
+    <v-card class="overflow-hidden">
+      <v-app-bar
+        :clipped-left="clipped"
+        app
+        absolute
+        color="indigo darken-4"
+        shrink-on-scroll
+        scroll-target="#scrolling-techniques"
+        prominent
+        height="120"
+        scroll-threshold="900"
       >
-        <v-btn rounded color="black" small
-          ><v-icon left small>mdi-web-box</v-icon>{{ locale.name }}</v-btn
-        >
-      </nuxt-link>
-    </v-app-bar>
+        <!-- https://vuetifyjs.com/en/styles/text-and-typography/#wrapping-and-overflow -->
 
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
+        <v-app-bar-title>
+          <v-row no-gutters>
+            <div class="text-h5 text-truncate">
+              {{ $t('toggleAppName') }}
+            </div>
+          </v-row>
+
+          <v-row no-gutters>
+            <live-datetime class="text-subtitle-1"></live-datetime>
+          </v-row>
+        </v-app-bar-title>
+
+        <v-spacer />
+
+        <nuxt-link
+          v-for="locale in availableLocales"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)"
+        >
+          <v-btn rounded color="black" small class="mt-2"
+            ><v-icon left small>mdi-web-box</v-icon>{{ locale.name }}</v-btn
+          >
+        </nuxt-link>
+      </v-app-bar>
+
+      <v-sheet
+        id="scrolling-techniques"
+        class="overflow-y-auto"
+        max-height="600"
+      >
+        <v-main>
+          <v-container style="height: 1000px">
+            <nuxt />
+            <snackbar></snackbar>
+          </v-container>
+        </v-main>
+      </v-sheet>
+    </v-card>
+    <!-- 
     <v-main>
-      <v-container>
-        <nuxt />
-        <snackbar></snackbar>
-      </v-container>
-    </v-main>
+            <v-container>
+              <nuxt />
+              <snackbar></snackbar>
+            </v-container>
+          </v-main> -->
 
     <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }} krm</span>

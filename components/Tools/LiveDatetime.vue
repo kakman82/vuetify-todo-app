@@ -1,5 +1,6 @@
 <template>
-  <div class="mt-2 ml-4 text-subtitle-1">
+  <!-- <div class="mt-2 ml-4 text-subtitle-1"> -->
+  <div>
     {{ date }}
   </div>
 </template>
@@ -30,7 +31,7 @@ export default {
         this.date = format(new Date(), 'dd MMMM, H:mm:ss', { locale: tr })
         setTimeout(this.getDate, 1000)
       } else {
-        this.date = format(new Date(), 'MMMM dd, HH:mm:ss')
+        this.date = format(new Date(), 'MMMM dd, H:mm:ss')
         setTimeout(this.getDate, 1000)
       }
     },
