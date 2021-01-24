@@ -40,4 +40,26 @@
 //     },
 //   },
 // }
+export default {
+  data() {
+    return {
+      // pageTitle: 'Test Title ',
+    }
+  },
+  computed: {
+    pageTitle() {
+      // dile göre title adı vermek için computed kullandım
+      return this.$i18n.locale === 'tr'
+        ? 'Yap. Uyg. | Hakkımızda'
+        : 'Todo App | About us'
+    },
+  },
+  head() {
+    return {
+      // titleTemplate: `%s | ${this.pageTitle}`,
+      // title direkt olarak tam adı verilen değer yapıyor - titleTemplate ile bu formatta yapmak mümkün : Kerem Todo | Hakkımızda gibi ama burada Kerem Todo titleTemplate olarak global tanımladığı için hem tr hem de eng de anısı gelir fakat computed daki gibi tanım olursa dile göre istediğimiz title gelir
+      title: this.pageTitle,
+    }
+  },
+}
 </script>

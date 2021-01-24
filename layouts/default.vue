@@ -64,12 +64,12 @@
           </v-btn>
         </v-row>
         <v-row>
-          <v-toolbar-title class="d-inline-flex text-h5 mt-2 ml-7">
+          <v-toolbar-title class="d-inline-flex text-h5 mt-5 ml-16">
             {{ $t('toggleAppName') }}
           </v-toolbar-title>
         </v-row>
         <live-datetime
-          class="d-inline-flex text-subtitle-1 ml-5"
+          class="d-inline-flex text-subtitle-1 ml-14"
         ></live-datetime>
         <v-row> </v-row>
       </v-container>

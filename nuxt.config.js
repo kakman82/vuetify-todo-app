@@ -3,14 +3,15 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - vuetify-todo-udemy',
-    title: 'vuetify-todo-udemy',
+    // titleTemplate: '%s - vuetify-todo-udemy',
+    title: 'Vuetify Todo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    //! icon değiştimek istersek --> https://laptrinhx.com/how-to-change-the-favicon-in-nuxt-191316310/
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png'  }],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -111,4 +112,8 @@ export default {
     
     standalone: true
   },
+  //! middleware tanımı için kullanmıştım fakat document.title erişemediğim için page içindeki dosyalarda tanımı yaptım. Detay açıklama middleware/pageTitle.js içinde yazdım
+  router: {
+    // middleware: 'pageTitle'
+  }
 }

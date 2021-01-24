@@ -53,5 +53,9 @@
     "Edit": "Edit",
     "Delete": "Delete"
   },
-  "searchTExtField" : "Search for..."  
+  "searchTExtField" : "Search for...",
+  "errorPage": {
+    "text": "Page not found",
+    "linkName": "Go to Homepage"
+  }  
 }

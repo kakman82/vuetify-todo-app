@@ -55,5 +55,9 @@
     "Edit": "Düzenle",
     "Delete": "Sil"
   },
-  "searchTExtField" : "Ara..."     
+  "searchTExtField" : "Ara...",
+  "errorPage": {
+    "text": "Sayfa bulunamadı",
+    "linkName": "Ana Sayfaya Git"
+  }       
 }
