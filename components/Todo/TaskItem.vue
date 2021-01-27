@@ -30,6 +30,12 @@
         <v-list-item-action>
           <task-menu :task="task"></task-menu>
         </v-list-item-action>
+
+        <v-list-item-action v-if="$store.state.sorting">
+          <v-btn dark color="pink" icon>
+            <v-icon>mdi-drag-horizontal-variant</v-icon>
+          </v-btn>
+        </v-list-item-action>
       </template>
     </v-list-item>
     <v-divider></v-divider>

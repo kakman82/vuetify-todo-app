@@ -1,4 +1,5 @@
 export const state = () => ({
+  sorting: false,
   search: null,
   snackbar: {
     show: false,
@@ -23,7 +24,7 @@ export const state = () => ({
       dueDate: null,
       done: false,
     },
-  ],
+  ]
 })
 
 export const mutations = {
@@ -66,6 +67,9 @@ export const mutations = {
   },
   setSearch(state, value){
     this.state.search = value
+  },
+  toggleSorting(state){
+    state.sorting = !state.sorting
   }
 }
 

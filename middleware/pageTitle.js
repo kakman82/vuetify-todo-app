@@ -8,21 +8,21 @@
 //? this.$i18n.locale in component
 //? $i18n.locale in template
 
-export default function ({app, route}) {
+// export default function ({app, route}) {
     // document.title = `$t('listName') - ${store.router.name}`
     // console.log('pageTitle middleware is globally working...!')
     // console.log('route name: ', route.name);
-    console.log('sayfa dili: ', app.i18n.locale);
-    console.log('route path: ', route.path);
-    let getRouteFullName = route.path.split('/')
-    let lastElement = getRouteFullName.length - 1
-    console.log(lastElement);
-    let routeName = getRouteFullName[lastElement]
+    // console.log('sayfa dili: ', app.i18n.locale);
+    // console.log('route path: ', route.path);
+    // let getRouteFullName = route.path.split('/')
+    // let lastElement = getRouteFullName.length - 1
+    // console.log(lastElement);
+    // let routeName = getRouteFullName[lastElement]
     // The regex pattern is /^./ matches the first character of a string.
-    let finalRouteName = routeName.replace(/^./, routeName[0].toUpperCase());
-    console.log('final name: ', finalRouteName)
+    // let finalRouteName = routeName.replace(/^./, routeName[0].toUpperCase());
+    // console.log('final name: ', finalRouteName)
 
     //! nuxt da window ya da document objesine erişmek biraz problemli imiş bu nedenle bu title işini nuxt sitesinde belirtildiği gibi head() metodu ile page altındaki dosyalar üzerinden yapmaya çalıştım -- > https://nuxtjs.org/faq/window-document-undefined ve --> https://stackoverflow.com/questions/60134881/nuxt-js-window-or-document-is-not-defined
     // window.document.title = `Vuetify Todo | ${finalRouteName}`
     
-}
+// }

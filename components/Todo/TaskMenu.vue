@@ -15,9 +15,9 @@
               <v-icon v-text="item.icon" small color="pink"></v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title @click="clickHandler(index)">{{
-                $t(item.title)
-              }}</v-list-item-title>
+              <v-list-item-title @click="clickHandler(index)">
+                {{ $t(item.title) }}
+              </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -52,7 +52,7 @@ export default {
     },
     items: [
       {
-        title: 'taskMenu.Edit',
+        title: 'taskMenu.edit',
         icon: 'mdi-pencil-plus',
         click() {
           // console.log('edit')
@@ -61,12 +61,19 @@ export default {
       },
 
       {
-        title: 'taskMenu.Delete',
+        title: 'taskMenu.delete',
         icon: 'mdi-delete',
         click() {
           // console.log('delete')
           // this ile data içindeki tanımlı verilere ulaşmak istediğimizde consolda undefined hatası veriyor. çünkü aşağıdaki this click metodunu gösteriyor, bunu çözmek için bu metodu kullanan aşağıdaki clickHandker içinde click.call(this) diyerek vue instance ulaşmış olduk..
           this.dialogs.delete = true
+        },
+      },
+      {
+        title: 'taskMenu.sort',
+        icon: 'mdi-drag-horizontal-variant',
+        click() {
+          this.$store.commit('toggleSorting')
         },
       },
     ],

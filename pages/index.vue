@@ -37,16 +37,17 @@
       <!-- <search class="my-n5" width="500px"></search> -->
       <search class="d-flex my-n2"></search>
 
-      <!-- Todo Header and Search Button -->
+      <!-- Todo Header and Search Button yerine VuetifyTodo daki kullandım-->
 
-      <h3 v-if="getTasks.length" class="mb-3">
+      <!-- <h3 v-if="getTasks.length" class="mb-3">
         <v-icon left> mdi-format-list-checks </v-icon>
         {{ $t('listName') }}
-      </h3>
-      <v-spacer></v-spacer>
+      </h3> -->
 
       <!-- List of tasks -->
-      <list-tasks></list-tasks>
+      <!-- <list-tasks></list-tasks> -->
+      <!-- list-tasks ilk yaptığım idi vuetifydaki güzeldi bunu ekledim -->
+      <vuetify-todo></vuetify-todo>
     </v-container>
     <!-- No Tasks View-->
     <no-tasks v-if="!getTasks.length"></no-tasks>
@@ -60,10 +61,18 @@ import ListTasks from '../components/Todo/ListTasks'
 import NoTasks from '../components/Todo/NoTasks'
 import Search from '../components/Tools/Search'
 import { mapGetters } from 'vuex'
+import VuetifyTodo from '../components/Todo/VuetifyTodo.vue'
 
 export default {
   name: 'index',
-  components: { TodoForm, TodoModal, ListTasks, NoTasks, Search },
+  components: {
+    TodoForm,
+    TodoModal,
+    ListTasks,
+    NoTasks,
+    Search,
+    VuetifyTodo,
+  },
   data() {
     return {
       showButton: false,

@@ -1,5 +1,7 @@
 {
-  "listName": "Todo List",
+  "listName": "Tasks",
+  "remaining": "Remaining",
+  "completed": "Completed",
   "aboutPage": "About us",
   "toggleAppName" : "Todo App",
   "toggleAppSubTitle" : "Best Todo Ever!",
@@ -16,7 +18,8 @@
       "clear": "Clear",
       "save": "Save",
       "cancel": "Cancel"
-    }
+    },
+    "sort": "Done Sorting"
   },
   "form": {
     "label": {
@@ -50,8 +53,10 @@
     "delete": "Task deleted!"
   },
   "taskMenu": {
-    "Edit": "Edit",
-    "Delete": "Delete"
+    "edit": "Edit",
+    "delete": "Delete",
+    "sort": "Sort"
+
   },
   "searchTExtField" : "Search for...",
   "errorPage": {

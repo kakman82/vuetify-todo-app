@@ -1,5 +1,7 @@
 {
-  "listName": "Yapılacaklar Listesi",
+  "listName": "Yapılacaklar",
+  "remaining": "Kalan",
+  "completed": "Tamamlanan",
   "aboutPage": "Hakkımızda...",
   "toggleAppName" : "Yapılacaklar Uygulaması",
   "toggleAppSubTitle" : "Henüz daha iyisi geliştirilmedi!",
@@ -16,7 +18,8 @@
       "clear": "Temizle",
       "save": "Kaydet",
       "cancel": "İptal"
-    }
+    },
+    "sort": "Sıralama Tamam"
   },
   "form": {
     "label": {
@@ -52,8 +55,9 @@
     "delete": "Yapılacak iş silindi!"
   },
   "taskMenu": {
-    "Edit": "Düzenle",
-    "Delete": "Sil"
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "sort": "Sırala"
   },
   "searchTExtField" : "Ara...",
   "errorPage": {
