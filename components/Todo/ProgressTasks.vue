@@ -1,12 +1,10 @@
 <template>
   <v-container>
-    <h3 class="success--text pl-n8 mt-n4">
-      {{ $t('listName') }}: {{ tasks.length }}
-    </h3>
+    <h3 class="pl-n8 mt-n4">{{ $t('listName') }}: {{ tasks.length }}</h3>
     <v-divider class="mt-4"></v-divider>
 
     <v-row class="my-1" align="center">
-      <strong class="mx-4 blue--text text--darken-2">
+      <strong class="mx-4">
         {{ $t('remaining') }}: {{ remainingTasks }}
       </strong>
 
