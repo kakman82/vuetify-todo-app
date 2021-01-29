@@ -1,9 +1,6 @@
 <template>
   <div>
-    <v-list-item
-      @click="$store.commit('doneTask', task.id)"
-      :class="{ 'pink lighten-3': task.done }"
-    >
+    <v-list-item @click="$store.dispatch('doneTask', task.id)">
       <!-- <template v-slot:default> -->
       <template>
         <v-list-item-action>
@@ -20,7 +17,7 @@
           <v-list-item-subtitle>
             <v-list-item-action v-if="task.dueDate">
               <v-list-item-action-text>
-                <v-icon small color="pink">mdi-calendar</v-icon>
+                <v-icon x-small color="pink">mdi-calendar</v-icon>
                 {{ niceDate(task.dueDate) }}
               </v-list-item-action-text>
             </v-list-item-action>
@@ -32,7 +29,7 @@
         </v-list-item-action>
 
         <v-list-item-action v-if="$store.state.sorting">
-          <v-btn dark color="pink" icon>
+          <v-btn dark color="pink" icon class="handle">
             <v-icon>mdi-drag-horizontal-variant</v-icon>
           </v-btn>
         </v-list-item-action>
@@ -63,9 +60,9 @@ export default {
       // ref--> https://stackoverflow.com/questions/64362242/how-to-format-date-with-date-fns
 
       if (this.$i18n.locale === 'tr') {
-        return format(dateParse, 'd MMM Y, EEE', { locale: tr })
+        return format(dateParse, 'MMM, d', { locale: tr })
       } else {
-        return format(dateParse, 'EEE, MMM do, Y')
+        return format(dateParse, 'MMM, d')
       }
     },
   },
@@ -75,5 +72,15 @@ export default {
 <style scoped>
 .v-list-item .v-list-item__title {
   white-space: normal;
+}
+</style>
+
+<style scoped>
+/* bu iki tanımı ghost olan sıralamada sürüklerken aynısı göstermemesi yani hayalet kısmı ve gölge yapmaması için ekledik    */
+.sortable-ghost {
+  opacity: 0;
+}
+.sortable-drag {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 </style>

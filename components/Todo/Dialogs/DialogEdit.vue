@@ -131,10 +131,14 @@ export default {
           id: this.task.id,
           title: this.taskTitle,
           dueDate: this.newDueDate,
-          translatedMessage: this.$t('snackbar.update'),
         }
-        //console.log('updateData: ', payload)
-        this.$store.dispatch('updateTask', payload)
+        console.log(' sending for updateData: ', payload)
+
+        const translatedMessage = this.$t('snackbar.update')
+
+        // update datanın ve snackbar mesajının actions a gönderimi
+        this.$store.dispatch('updateTask', { payload, translatedMessage })
+
         this.dialogs.edit = false
       } else {
         console.log('Form is not valid!')

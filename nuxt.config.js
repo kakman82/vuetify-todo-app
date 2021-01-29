@@ -13,6 +13,12 @@ export default {
     //! icon değiştimek istersek --> https://laptrinhx.com/how-to-change-the-favicon-in-nuxt-191316310/
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png'  }],
   },
+  //! mobile dan uygulamaya erişebilmek için bu tanımı yaptım
+  //! ref: https://nuxtjs.org/docs/2.x/features/configuration#edit-host-and-port
+  server: {
+    host: '0', // default: localhost
+    port: 9000 // default: 3000
+  },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],

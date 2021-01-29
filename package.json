@@ -13,9 +13,11 @@
     "@nuxtjs/pwa": "^3.0.2",
     "core-js": "^3.6.5",
     "date-fns": "^2.16.1",
+    "localbase": "^0.7.4",
     "moment": "^2.29.1",
     "nuxt": "^2.14.6",
-    "nuxt-i18n": "^6.17.0"
+    "nuxt-i18n": "^6.17.0",
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
     "@nuxtjs/date-fns": "^1.4.3",

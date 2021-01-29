@@ -1,12 +1,12 @@
 <template>
   <v-container class="width:101%">
     <h3 class="success--text pl-n8 mt-n4">
-      {{ $t('listName') }}:&nbsp;
-      <v-fade-transition leave-absolute>
+      {{ $t('listName') }}: {{ tasks.length }}
+      <!-- <v-fade-transition leave-absolute>
         <span :key="`tasks-${tasks.length}`">
           {{ tasks.length }}
         </span>
-      </v-fade-transition>
+      </v-fade-transition> -->
     </h3>
 
     <v-divider class="mt-4"></v-divider>
@@ -34,52 +34,59 @@
     <v-divider class="mb-4"></v-divider>
 
     <v-card v-if="tasks.length > 0">
-      <template v-for="(task, i) in tasks">
-        <v-divider v-if="i !== 0" :key="`${i}-divider`"></v-divider>
+      <draggable
+        :list="$store.getters.filteredTask"
+        handle=".handle"
+        :key="$store.getters.filteredTask.length"
+      >
+        <template v-for="(task, i) in tasks">
+          <v-divider v-if="i !== 0" :key="`${i}-divider`"></v-divider>
+          <v-list-item
+            @click="$store.commit('doneTask', task.id)"
+            :key="`${i}-${task.id}`"
+          >
+            <v-list-item-action>
+              <v-checkbox :input-value="task.done" color="pink"></v-checkbox>
+            </v-list-item-action>
 
-        <v-list-item
-          @click="$store.commit('doneTask', task.id)"
-          :key="`${i}-${task.id}`"
-        >
-          <v-list-item-action>
-            <v-checkbox :input-value="task.done" color="pink"></v-checkbox>
-          </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title
+                :class="{ 'text-decoration-line-through': task.done }"
+                class="text-wrap"
+              >
+                {{ task.title }}
+              </v-list-item-title>
 
-          <v-list-item-content>
-            <v-list-item-title
-              :class="{ 'text-decoration-line-through': task.done }"
-              class="text-wrap"
-            >
-              {{ task.title }}
-            </v-list-item-title>
+              <v-list-item-subtitle>
+                <v-list-item-action v-if="task.dueDate">
+                  <v-list-item-action-text>
+                    <v-icon x-small color="pink">mdi-calendar</v-icon>
+                    {{ niceDate(task.dueDate) }}
+                  </v-list-item-action-text>
+                </v-list-item-action>
+              </v-list-item-subtitle>
+            </v-list-item-content>
 
-            <v-list-item-subtitle>
-              <v-list-item-action v-if="task.dueDate">
-                <v-list-item-action-text>
-                  <v-icon x-small color="pink">mdi-calendar</v-icon>
-                  {{ niceDate(task.dueDate) }}
-                </v-list-item-action-text>
-              </v-list-item-action>
-            </v-list-item-subtitle>
-          </v-list-item-content>
-          <v-list-item-action>
-            <!-- Task Menu Component   -->
-            <task-menu :task="task"></task-menu>
-          </v-list-item-action>
+            <v-list-item-action>
+              <!-- Task Menu Component   -->
+              <task-menu :task="task"></task-menu>
+            </v-list-item-action>
 
-          <!-- Bu yeşil tik - ama görüntüyü bozduğundan kaldırdım
+            <!-- Bu yeşil tik - ama görüntüyü bozduğundan kaldırdım
           <v-scroll-x-transition>
             <v-icon v-if="task.done" color="success"> mdi-check </v-icon>
           </v-scroll-x-transition> -->
 
-          <!-- Sorting Butonu   -->
-          <v-list-item-action v-if="$store.state.sorting">
-            <v-btn dark color="pink" icon>
-              <v-icon>mdi-drag-horizontal-variant</v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </v-list-item>
-      </template>
+            <!-- Sorting Butonu   -->
+            <v-list-item-action v-if="$store.state.sorting">
+              <!-- bu class="handle" draggable dan geliyor   -->
+              <v-btn class="handle" dark color="pink" icon>
+                <v-icon>mdi-drag-horizontal-variant</v-icon>
+              </v-btn>
+            </v-list-item-action>
+          </v-list-item>
+        </template>
+      </draggable>
     </v-card>
 
     <!-- Button Done Sorting  -->
@@ -91,7 +98,11 @@
 import { mapGetters } from 'vuex'
 import { format, parseISO, parse } from 'date-fns'
 import { tr } from 'date-fns/locale'
+//! npm i -S vuedraggable
+//! örnek kodlar --> https://github.com/SortableJS/Vue.Draggable/blob/master/example/components/handle.vue
+import draggable from 'vuedraggable'
 export default {
+  components: { draggable },
   computed: {
     ...mapGetters({
       tasks: 'filteredTask',
