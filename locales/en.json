@@ -50,7 +50,8 @@
   "snackbar": {
     "add": "Todo added!",
     "update": "Task updated!",
-    "delete": "Task deleted!"
+    "delete": "Task deleted!",
+    "sort": "Sorting is not possible after searching! Clear search feild first."
   },
   "taskMenu": {
     "edit": "Edit",

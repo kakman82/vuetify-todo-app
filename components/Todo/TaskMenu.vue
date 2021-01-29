@@ -72,8 +72,16 @@ export default {
       {
         title: 'taskMenu.sort',
         icon: 'mdi-drag-horizontal-variant',
+        // burada eğer if koymaz isek search yapıldıktan sonra sort işlemi yapılırsa indexedDB sadece sort edilenleri tüm task array olarak algıladığı için - ki buna sıralama yaptığından - geri kalan taskları yani search edilmeyenleri silecektir!
         click() {
-          this.$store.commit('toggleSorting')
+          // eğer search inputunda bir veri yok ise yani bişi yazılmadı ise sort et yoksa aşağıdaki mesajı göster kullanıcıya
+          if (!this.$store.state.search) {
+            this.$store.commit('toggleSorting')
+          } else {
+            const errorMessage = this.$t('snackbar.sort')
+            // console.log(errorMessage)
+            this.$store.commit('showSnackbar', errorMessage)
+          }
         },
       },
     ],

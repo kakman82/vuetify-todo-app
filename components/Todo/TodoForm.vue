@@ -76,7 +76,7 @@
         {{ $t('button.form.clear') }}
       </v-btn>
     </v-form>
-    <v-divider class="mt-4"></v-divider>
+    <!-- <v-divider class="mt-4"></v-divider> -->
   </v-container>
 </template>
 
@@ -90,7 +90,7 @@ export default {
       valid: true,
       showForm: false,
       title: '',
-      date: null,
+      date: '',
       inputRules: [
         (v) => !!v || this.$t('form.errorRequired'),
         (v) => (v && v.length >= 3) || this.$t('form.errorGreaterThan'),
@@ -125,7 +125,9 @@ export default {
 
         this.$store.dispatch('addTask', { formData, translatedMessage })
         // bu aşağıdaki title desr form inputlarını ayrı ayrı boşaltmak yerine direk reset funcı da çağırabiliriz
-        this.reset()
+        // this.reset()
+        this.title = ''
+        this.date = ''
         // yeni task eklendikten sonra form görünümünün ana sayfadan kaldırılması
         this.showForm = false
       }

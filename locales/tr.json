@@ -52,7 +52,8 @@
   "snackbar": {
     "add": "Yapılacak iş eklendi!",
     "update": "Yapılacak iş güncellendi!",
-    "delete": "Yapılacak iş silindi!"
+    "delete": "Yapılacak iş silindi!",
+    "sort": "Arama yapıldıktan sonra sıralama yapılamaz! Önce arama girişini temizlemelisin."
   },
   "taskMenu": {
     "edit": "Düzenle",

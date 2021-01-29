@@ -5,7 +5,6 @@
 
     <v-container v-if="getTasks.length">
       <!-- Search Field -->
-      <!-- <search class="my-n5" width="500px"></search> -->
       <search class="d-flex mt-n6"></search>
 
       <!-- Todo Header and Search Button yerine VuetifyTodo daki kullandım-->
