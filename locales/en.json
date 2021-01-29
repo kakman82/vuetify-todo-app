@@ -51,7 +51,7 @@
     "add": "Todo added!",
     "update": "Task updated!",
     "delete": "Task deleted!",
-    "sort": "Sorting is not possible after searching! Clear search feild first."
+    "sort": "Sorting is not possible after searching! Clear search field first."
   },
   "taskMenu": {
     "edit": "Edit",
