@@ -1,4 +1,4 @@
-# vuetify-todo-udemy
+# vuetify-todo-app
 
 ## Build Setup
 
